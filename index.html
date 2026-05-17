@@ -3,669 +3,601 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Imperial construction - Engineering & construction</title>
+  <title>Imperial Construction — Engineering & Construction</title>
 
   <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+  <meta name="description" content="Imperial Construction — Building construction, renovation, project management and civil engineering works. High quality engineering & construction services.">
   <style>
     :root{
-      --bg:#0b0d10;
-      --card:#0f1316;
-      --muted:#9aa4ad;
-      --accent:#ff7a00; /* orange accent */
+      --bg:#0b0f12;
+      --card:#0f1416;
+      --muted:#98a0a6;
+      --accent:#ff6a00;
+      --accent-2:#ff8c3a;
       --glass: rgba(255,255,255,0.03);
       --radius:12px;
+      --container:1200px;
+      --max-width:1100px;
     }
 
+    /* Reset */
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
       font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background:linear-gradient(180deg,#060708 0%, #0b0d10 100%);
-      color:#e6eef6;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(255,106,0,0.03), transparent),
+                  radial-gradient(1000px 500px at 90% 90%, rgba(255,140,58,0.02), transparent),
+                  var(--bg);
+      color:#e6eef2;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
-      line-height:1.4;
-      overflow-y:scroll;
+      line-height:1.45;
+      scroll-behavior:smooth;
+      padding-bottom:60px;
+      
     }
 
-    /* Sticky Navbar */
+    .wrap{max-width:var(--max-width);margin:0 auto;padding:28px 20px;
+    
+    }
+    
+    /* NAV */
     header{
       position:sticky;
       top:0;
       z-index:60;
       backdrop-filter: blur(6px);
-      background: linear-gradient(180deg, rgba(11,13,16,0.75), rgba(11,13,16,0.45));
-      border-bottom: 1px solid rgba(255,255,255,0.03);
-    }
-    .container{
-      max-width:1200px;
-      margin:0 auto;
-      padding:1rem;
+      background: linear-gradient(180deg, rgba(11,15,18,0.65), rgba(11,15,18,0.5));
+      border-bottom:1px solid rgba(255,255,255,0.03);
     }
     .nav{
       display:flex;
       align-items:center;
-      gap:1rem;
       justify-content:space-between;
+      gap:20px;
+      height:72px;
+      max-width:var(--container);
+      margin:0 auto;
+      padding:0 20px;
     }
     .brand{
       display:flex;
-      gap:.75rem;
+      gap:14px;
       align-items:center;
       text-decoration:none;
       color:inherit;
     }
-    .brand .logo{
-      width:44px;
-      height:44px;
-      border-radius:10px;
-      background: linear-gradient(135deg,var(--accent), #ff5b00);
-      display:grid;
-      place-items:center;
-      font-weight:800;
-      color:#0b0d10;
-      font-size:18px;
-      box-shadow: 0 4px 18px rgba(255,122,0,0.12), inset 0 -6px 18px rgba(0,0,0,0.18);
+    .logo img{
+   height:47px;
+   width: 47px;
+   border-radius: 50%;
+
     }
-    nav ul{
+    .brand h1{font-size:16px;margin:0}
+    .brand p{font-size:12px;margin:0;color:var(--muted)}
+
+    nav.nav-links{
       display:flex;
-      gap:0.5rem;
-      list-style:none;
-      margin:0;
-      padding:0;
+      gap:18px;
       align-items:center;
     }
-    nav a{
+    nav.nav-links a{
       color:var(--muted);
       text-decoration:none;
-      padding:.6rem .8rem;
+      padding:10px 12px;
       border-radius:8px;
       font-weight:600;
-      font-size:14px;
       transition:all .18s ease;
+      font-size:14px;
     }
-    nav a:hover, nav a.active{
-      color:#fff;
-      background: linear-gradient(90deg, rgba(255,122,0,0.12), rgba(255,90,0,0.06));
-      box-shadow: 0 4px 18px rgba(255,122,0,0.04);
+    nav.nav-links a:hover, nav.nav-links a.active{
+      color:white;
+      background:linear-gradient(90deg, rgba(255,106,0,0.12), rgba(255,140,58,0.06));
+      transform:translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
     }
 
     .cta{
       display:inline-flex;
+      gap:10px;
       align-items:center;
-      gap:.6rem;
-      padding:.6rem .9rem;
+    }
+    .btn{
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      padding:10px 14px;
       border-radius:10px;
-      background: linear-gradient(90deg,var(--accent), #ff5b00);
-      color:#0b0d10;
+      color:#071014;
       font-weight:700;
       text-decoration:none;
-      box-shadow: 0 8px 28px rgba(255,122,0,0.12);
-      border: none;
-      cursor:pointer;
+      box-shadow: 0 10px 30px rgba(255,106,0,0.12);
+      transition:transform .15s ease, box-shadow .15s ease;
     }
+    .btn:hover{transform:translateY(-3px);box-shadow: 0 18px 40px rgba(255,106,0,0.16);}
 
     /* Mobile */
-    .hamburger{
-      display:none;
-      background:transparent;
-      border:0;
-      color:var(--muted);
-      font-size:22px;
-      cursor:pointer;
+    .menu-toggle{display:none;background:transparent;border:0;color:var(--muted);font-size:20px;padding:8px}
+    @media (max-width:900px){
+      nav.nav-links{display:none; position:absolute; right:18px; top:72px; flex-direction:column; background:linear-gradient(180deg, rgba(11,15,18,0.98), rgba(11,15,18,0.98)); padding:14px; border-radius:10px; min-width:220px;}
+      nav.nav-links.show{display:flex}
+      .menu-toggle{display:block}
     }
 
-    /* Hero */
+    /* HERO */
     .hero{
       display:grid;
       grid-template-columns:1fr 420px;
-      gap:2rem;
+      gap:36px;
       align-items:center;
-      padding:3rem 1rem;
+      padding:64px 20px 48px;
+
     }
-    .hero .eyebrow{
-      color:var(--accent);
-      font-weight:700;
-      font-size:13px;
-      letter-spacing:.8px;
-      text-transform:uppercase;
-      margin-bottom:.8rem;
+    
+    
+    .hero-left h2{
+      margin:0 0 12px 0;
+      font-size:36px;
+      letter-spacing:-0.4px;
+      color: #0b0f12;
+      
     }
-    .hero h1{
-      margin:0 0 .6rem 0;
-      font-size: clamp(28px, 4vw, 44px);
-      line-height:1.02;
-      letter-spacing:-0.01em;
-      font-weight:800;
-      color:#fff;
-    }
-    .hero p{
+    .lead{
       color:var(--muted);
-      margin:0 0 1.2rem 0;
+      margin-bottom:22px;
       max-width:60ch;
     }
-    .hero .actions{display:flex; gap:.8rem; margin-top:1rem}
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:var(--radius);
-      padding:1rem;
-      border:1px solid rgba(255,255,255,0.03);
-      box-shadow: 0 6px 30px rgba(0,0,0,0.6);
+    .feature-list{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      
     }
+    .chip{
+     
+    padding:10px 12px;
+    border-radius:16px;
+    color:var(--muted);
+    font-weight:600;
+    font-size:13px;
+    display:inline-flex;
+    gap:8px;
+    align-items:center;
+    color: #000000;
+     background:linear-gradient(rgba(0, 225, 255, 0.589), rgba(243, 2, 223, 0.247));
+    }
+    .hero-cta{
+      display:flex;
+      gap:12px;
+      margin-top:18px
+    }
+    .hero-graphic{
+      background:linear-gradient(180deg, rgba(233, 105, 13, 0.06), rgba(255,140,58,0.03));
+      border-radius:16px;
+      padding:18px;
+      display:grid;
+      gap:12px;
+      border:1px solid rgba(207, 205, 205, 0.03);
+    }
+    .stat{
+      display:flex;align-items:center;justify-content:space-between;padding:12px;background:rgba(0,0,0,0.15);border-radius:12px;
+    }
+    .stat strong{font-size:22px}
+    .stat small{color:var(--muted)}
+
+    /* Sections */
+    section{padding:48px 20px}
+    h3.section-title{font-size:20px;margin:0 0 18px 0}
+    p.lead-small{color:var(--muted);margin:0 0 28px 0}
 
     /* Services */
-    .services{
+    .services-grid{
       display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:1rem;
-      margin-top:1.25rem;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
     }
-    .service{
-      padding:1.15rem;
-      border-radius:12px;
-      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
-      display:flex;
-      flex-direction:column;
-      gap:.6rem;
-      min-height:110px;
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:14px;padding:18px;border:1px solid rgba(255,255,255,0.03);
+      transition:transform .18s ease, box-shadow .18s ease;
     }
-    .service .icon{
-      width:44px;
-      height:44px;
-      border-radius:9px;
-      background:rgba(255,122,0,0.12);
-      color:var(--accent);
-      display:grid;
-      place-items:center;
-      font-weight:700;
+    .card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(0,0,0,0.6)}
+    .card h4{margin:0 0 8px 0}
+    .card p{margin:0;color:var(--muted)}
+    .service-ico{
+      width:54px;height:54px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:grid;place-items:center;color:#071014;font-weight:800;margin-bottom:10px;
     }
-    .service h4{margin:0;color:#fff;margin-top:.3rem}
-    .service p{margin:0;color:var(--muted);font-size:14px;}
-
-    /* About */
-    .about{
-      display:grid;
-      grid-template-columns: 1fr 360px;
-      gap:1.5rem;
-      align-items:center;
-      margin-top:1.5rem;
-    }
-    .about .stats{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:1rem;
-    }
-    .stat{background:var(--card); padding:1rem;border-radius:10px;text-align:center}
-    .stat h3{margin:0;font-size:20px;color:var(--accent)}
-    .stat p{margin:0;color:var(--muted);font-size:13px}
 
     /* Projects */
     .projects-grid{
       display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:1rem;
-      margin-top:1rem;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
     }
-    .project-card{
-      position:relative;
-      overflow:hidden;
-      border-radius:12px;
-      min-height:160px;
-      background:linear-gradient(180deg,#0b1013,#0f1316);
-      border:1px solid rgba(255,255,255,0.03);
-    }
-    .project-card .meta{
-      position:absolute;
-      bottom:12px;
-      left:12px;
-      right:12px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-    .project-card .meta h4{margin:0;font-size:15px}
-    .project-card .meta p{margin:0;color:var(--muted);font-size:13px}
-
-    /* Contact */
-    .contact-grid{
-      display:grid;
-      grid-template-columns: 1fr 380px;
-      gap:1rem;
-      margin-top:1.25rem;
-    }
-    form input, form textarea{
-      width:100%;
-      padding:.9rem;
-      border-radius:10px;
-      border:1px solid rgba(255,255,255,0.04);
-      background:transparent;
-      color:#e8f1fb;
-      resize:vertical;
-      font-size:14px;
-    }
-    form label{font-size:13px;color:var(--muted);display:block;margin-bottom:.4rem}
-    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
-    .btn-ghost{
-      background:transparent;
-      color:var(--accent);
-      border:1px solid rgba(255,122,0,0.16);
-      padding:.75rem 1rem;
-      border-radius:10px;
+    .project{
+      background:linear-gradient(180deg, rgba(0,0,0,0.17), rgba(0,0,0,0.12));
+      border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.03);
+      transition:transform .18s ease, box-shadow .18s ease;
       cursor:pointer;
     }
+    .project img{width:100%;height:180px;object-fit:cover;display:block}
+    .project .p-body{padding:14px}
+    .project:hover{transform:translateY(-8px);box-shadow:0 24px 50px rgba(0,0,0,0.6)}
+    .project small{color:var(--muted)}
 
-    footer{
-      margin-top:2.5rem;
-      padding:2rem 0;
-      border-top:1px solid rgba(255,255,255,0.02);
-      color:var(--muted);
+    /* About */
+    .about-grid{display:grid;grid-template-columns:1fr 360px;gap:28px}
+    .values{display:flex;flex-direction:column;gap:12px}
+    .value{
+      display:flex;gap:12px;align-items:flex-start;background:var(--card);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)
     }
+    .val-ico{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;font-weight:700;color:#071014}
 
-    /* Responsive */
-    @media (max-width:980px){
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 360px;gap:20px}
+    .form input,.form textarea{
+      width:100%;
+      padding:12px 14px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.04);
+      background:rgba(255,255,255,0.02);
+      color:#e7f0f5;
+      margin-bottom:12px;
+      font-size:14px;
+    }
+    .form textarea{min-height:140px;resize:vertical}
+    .muted-box{background:var(--card);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .contact-row{display:flex;gap:12px;align-items:center}
+    .contact-ico{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;color:#071014;font-weight:800}
+
+    /* Footer */
+    footer{padding:28px 20px;border-top:1px solid rgba(255,255,255,0.03);color:var(--muted)}
+    .footer-grid{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+    .social-links a{color:var(--muted);margin-left:12px;text-decoration:none}
+
+    /* Responsive tweaks */
+    @media (max-width:1100px){
       .hero{grid-template-columns:1fr}
-      .about{grid-template-columns:1fr}
-      .contact-grid{grid-template-columns:1fr}
+      .about-grid{grid-template-columns:1fr}
       .projects-grid{grid-template-columns:repeat(2,1fr)}
-      .services{grid-template-columns:repeat(2,1fr)}
+      .services-grid{grid-template-columns:1fr}
     }
-    @media (max-width:720px){
-      .container{padding:.7rem}
-      nav ul{display:none}
-      .hamburger{display:inline-flex}
-      .hero { padding:2rem .6rem}
+    @media (max-width:680px){
       .projects-grid{grid-template-columns:1fr}
-      .service{min-height:120px}
+      .hero-left h2{font-size:28px}
+      .brand h1{font-size:14px}
+    }
+    .hero-wrap{
+      background-image: url(photos/villa.jpeg);
+      background-size: cover;
+      background-position: center;
+    }
+    h2, p{
+      color: #0f1416;
     }
 
-    /* Mobile nav panel */
-    .mobile-panel{
-      position:fixed;
-      inset:0;
-      background:linear-gradient(180deg, rgba(7,8,10,0.82), rgba(7,8,10,0.9));
-      display:none;
-      z-index:100;
-      padding:5rem 1rem 2rem;
-      overflow:auto;
-    }
-    .mobile-panel.active{display:block}
-    .mobile-panel nav ul{display:flex; flex-direction:column; gap:.4rem}
-    .mobile-panel .mobile-cta{margin-top:1rem;display:flex;gap:.6rem}
   </style>
 </head>
 <body>
-
-<header>
-  <div class="container nav" role="navigation" aria-label="Main navigation">
-    <a href="#home" class="brand" onclick="closeMobile()">
-      <div class="logo">VC</div>
-      <div>
-        <div style="font-weight:800">Vanguard</div>
-        <div style="font-size:12px;color:var(--muted);margin-top:2px">Construction Co.</div>
-      </div>
-    </a>
-
-    <nav aria-hidden="false">
-      <ul id="menu">
-        <li><a href="#home" class="navlink active">Home</a></li>
-        <li><a href="#services" class="navlink">Services</a></li>
-        <li><a href="#about" class="navlink">About</a></li>
-        <li><a href="#projects" class="navlink">Projects</a></li>
-        <li><a href="#contact" class="navlink">Contact</a></li>
-      </ul>
-    </nav>
-
-    <div style="display:flex;align-items:center;gap:.6rem">
-      <a href="#contact" class="cta navlink">Get a Quote</a>
-      <button class="hamburger" aria-label="Open menu" onclick="toggleMobile()">☰</button>
-    </div>
-  </div>
-</header>
-
-<!-- Mobile Panel -->
-<div id="mobilePanel" class="mobile-panel" aria-hidden="true">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem" class="container">
-    <div style="display:flex;gap:.6rem;align-items:center">
-      <div class="logo" style="width:40px;height:40px">VC</div>
-      <div>
-        <div style="font-weight:800">Vanguard</div>
-        <div style="font-size:12px;color:var(--muted);margin-top:2px">Construction Co.</div>
-      </div>
-    </div>
-    <button class="hamburger" aria-label="Close menu" onclick="toggleMobile()">✕</button>
-  </div>
-
-  <nav class="container" aria-label="Mobile navigation">
-    <ul>
-      <li><a href="#home" class="navlink" onclick="closeMobile()">Home</a></li>
-      <li><a href="#services" class="navlink" onclick="closeMobile()">Services</a></li>
-      <li><a href="#about" class="navlink" onclick="closeMobile()">About</a></li>
-      <li><a href="#projects" class="navlink" onclick="closeMobile()">Projects</a></li>
-      <li><a href="#contact" class="navlink" onclick="closeMobile()">Contact</a></li>
-    </ul>
-
-    <div class="mobile-cta" style="margin-top:1rem">
-      <a class="cta" href="#contact" onclick="closeMobile()">Request a Quote</a>
-      <a class="btn-ghost" href="#projects" onclick="closeMobile()">Our Work</a>
-    </div>
-  </nav>
-</div>
-
-<main>
-  <section id="home" class="container hero" aria-labelledby="hero-title">
-    <div>
-      <div class="eyebrow">Trusted • Reliable • Bold</div>
-      <h1 id="hero-title">Building tomorrow's skyline with precision and pride</h1>
-      <p>Vanguard Construction Co. delivers commercial and residential construction, renovation, and project management — on time and beyond expectation. We blend engineering excellence, modern design, and sustainable practices to bring bold visions to life.</p>
-      <div class="actions">
-        <a href="#projects" class="cta">View Projects</a>
-        <a href="#services" class="btn-ghost">Our Services</a>
-      </div>
-
-      <div class="card" style="margin-top:1.25rem">
-        <h3 style="margin:0 0 .25rem 0">Why clients choose us</h3>
-        <p style="margin:0;color:var(--muted)">Comprehensive planning, transparent budgeting, and expert teams — from site survey to final handover.</p>
-      </div>
-
-      <section id="services" style="margin-top:1.25rem">
-        <h2 style="margin:0 0 .6rem 0">Services</h2>
-        <div class="services" aria-label="Services list">
-          <div class="service card">
-            <div style="display:flex;align-items:center;gap:.6rem">
-              <div class="icon">GC</div>
-              <h4>General Contracting</h4>
-            </div>
-            <p>Full-service contracting from foundations to finish — schedule-driven and quality-focused.</p>
-          </div>
-          <div class="service card">
-            <div style="display:flex;align-items:center;gap:.6rem">
-              <div class="icon">PM</div>
-              <h4>Project Management</h4>
-            </div>
-            <p>Integrated planning, procurement, and site supervision to keep costs and timelines on track.</p>
-          </div>
-          <div class="service card">
-            <div style="display:flex;align-items:center;gap:.6rem">
-              <div class="icon">RD</div>
-              <h4>Design & Renovation</h4>
-            </div>
-            <p>Adaptive reuse, interior upgrades, and modern design solutions for growing needs.</p>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <aside>
-      <div class="card">
-        <h4 style="margin:0 0 .5rem 0">Request a consultation</h4>
-        <p style="color:var(--muted);margin:0 0 .8rem 0">Tell us about your project and we'll prepare a tailored plan and estimate.</p>
-        <a href="#contact" class="cta" style="display:block;text-align:center;">Contact Us</a>
-      </div>
-
-      <div class="card" style="margin-top:1rem">
-        <h4 style="margin:0">Safety & Quality</h4>
-        <p style="color:var(--muted);margin-top:.5rem">ISO-level processes, certified safety officers, and continuous quality audits.</p>
-      </div>
-    </aside>
-  </section>
-
-  <section id="about" class="container about" aria-labelledby="about-title">
-    <div>
-      <h2 id="about-title" style="margin-top:0">About Us</h2>
-      <p style="color:var(--muted);max-width:65ch">Founded by industry veterans, Vanguard Construction Co. combines decades of experience in commercial builds, civil works, and residential projects. Our team focuses on sustainable material choices, digital coordination, and client-first communication to deliver projects that stand the test of time.</p>
-
-      <div style="margin-top:1rem" class="card">
-        <h3 style="margin:0">Our Approach</h3>
-        <ul style="margin:8px 0 0 16px;color:var(--muted)">
-          <li>Transparent estimating and budgeting</li>
-          <li>Lean construction & schedule optimization</li>
-          <li>Safety-first site practices</li>
-        </ul>
-      </div>
-    </div>
-
-    <aside>
-      <div class="stats">
-        <div class="stat card">
-          <h3>18+</h3>
-          <p>Years experience</p>
-        </div>
-        <div class="stat card">
-          <h3>300+</h3>
-          <p>Projects completed</p>
-        </div>
-        <div class="stat card">
-          <h3>99%</h3>
-          <p>Client satisfaction</p>
-        </div>
-      </div>
-    </aside>
-  </section>
-
-  <section id="projects" class="container" aria-labelledby="projects-title" style="margin-top:1.5rem">
-    <h2 id="projects-title">Featured Projects</h2>
-    <p style="color:var(--muted)">A selection of recent builds demonstrating scale, innovation, and finish quality.</p>
-
-    <div class="projects-grid" role="list">
-      <div class="project-card card" role="listitem" style="background-image: linear-gradient(120deg, rgba(255,122,0,0.06), transparent), url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22400%22><rect width=%22600%22 height=%22400%22 fill=%22%230f1316%22/><text x=%2230%22 y=%2260%22 font-size=%2240%22 fill=%22%23ff7a00%22>Industrial Park</text></svg>'); background-size:cover; background-position:center" onclick="openProject('Industrial Park', 'Completed 2025 — 120,000 sq ft industrial logistics hub with sustainable systems and advanced site controls')">
-        <div class="meta">
-          <div>
-            <h4>Industrial Park</h4>
-            <p>Logistics hub — 120k sqft</p>
-          </div>
-          <div style="display:flex;gap:.5rem">
-            <button class="btn-ghost" onclick="event.stopPropagation();openProject('Industrial Park', 'Completed 2025 — 120,000 sq ft industrial logistics hub with sustainable systems and advanced site controls')">Details</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card card" role="listitem" style="background-image: linear-gradient(120deg, rgba(255,122,0,0.06), transparent), url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22400%22><rect width=%22600%22 height=%22400%22 fill=%22%230f1316%22/><text x=%2230%22 y=%2260%22 font-size=%2240%22 fill=%22%23ff7a00%22>Riverside Residences</text></svg>'); background-size:cover; background-position:center" onclick="openProject('Riverside Residences', 'Luxury waterfront apartments — 48 units with amenity deck and integrated smart systems')">
-        <div class="meta">
-          <div>
-            <h4>Riverside Residences</h4>
-            <p>Luxury apartments</p>
-          </div>
-          <div>
-            <button class="btn-ghost" onclick="event.stopPropagation();openProject('Riverside Residences', 'Luxury waterfront apartments — 48 units with amenity deck and integrated smart systems')">Details</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card card" role="listitem" style="background-image: linear-gradient(120deg, rgba(255,122,0,0.06), transparent), url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22400%22><rect width=%22600%22 height=%22400%22 fill=%22%230f1316%22/><text x=%2230%22 y=%2260%22 font-size=%2240%22 fill=%22%23ff7a00%22>Downtown Office</text></svg>'); background-size:cover; background-position:center" onclick="openProject('Downtown Office', 'Adaptive office tower renovation — energy efficiency upgrades and new facade')">
-        <div class="meta">
-          <div>
-            <h4>Downtown Office</h4>
-            <p>Office renovation</p>
-          </div>
-          <div>
-            <button class="btn-ghost" onclick="event.stopPropagation();openProject('Downtown Office', 'Adaptive office tower renovation — energy efficiency upgrades and new facade')">Details</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div style="margin-top:1rem">
-      <a class="cta" href="#contact">Discuss a similar project</a>
-    </div>
-  </section>
-
-  <section id="contact" class="container" aria-labelledby="contact-title" style="margin-top:1.5rem">
-    <h2 id="contact-title">Contact</h2>
-    <p style="color:var(--muted)">Ready to start? Share the details below and our team will reach out within one business day.</p>
-
-    <div class="contact-grid">
-      <form class="card" onsubmit="submitForm(event)" aria-label="Contact form" style="display:flex;flex-direction:column;gap:.75rem">
-        <div class="form-row">
-          <div>
-            <label for="name">Full name</label>
-            <input id="name" name="name" required placeholder="Jane Doe">
-          </div>
-          <div>
-            <label for="phone">Phone</label>
-            <input id="phone" name="phone" placeholder="+1 555 555 5555">
-          </div>
-        </div>
-
+  <header>
+    <div class="nav">
+      <a class="brand" href="#home">
+        <div class="logo"><img src="photos/etienne-girardet-sgYamIzhAhg-unsplash.jpg"></div>
         <div>
-          <label for="email">Email</label>
-          <input id="email" type="email" name="email" required placeholder="you@company.com">
+          <h1>Imperial Construction Company ltd</h1>
+          <p>Engineering • Build • Manage</p>
+        </div>
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle menu" id="menuToggle">☰</button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#services" class="nav-link">Service</a>
+        <a href="#about" class="nav-link">About Us</a>
+        <a href="#projects" class="nav-link">Project</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="cta">
+        <a href="#contact" class="btn">Get a Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero-wrap" aria-label="Home">
+      <div class="hero-left">
+        <h2>Reliable engineering and construction for modern infrastructure</h2>
+        <p class="lead">Imperial Construction delivers high-quality building construction, comprehensive renovation, project management and civil engineering works. We combine engineering precision with modern design to create enduring structures.</p>
+
+        <div class="feature-list">
+          <div class="chip">ISO-Certified Teams</div>
+          <div class="chip">Safety First</div>
+          <div class="chip">Expert Project Management</div>
         </div>
 
-        <div>
-          <label for="message">Project details</label>
-          <textarea id="message" name="message" rows="5" placeholder="Brief description, budget range, location..." required></textarea>
+        <div class="hero-cta">
+          <a href="#projects" class="btn">View Projects</a>
+          <a href="#services" class="btn" style="background:rgb(78, 6, 245);border:1px solid rgba(0, 0, 0, 0.04);color:var(--muted)">Our Services</a>
+        </div>
+      </div>
+
+      <aside class="hero-graphic" aria-hidden="false">
+        <div class="stat">
+          <div>
+            <small>Completed Projects</small>
+            <strong>+320</strong>
+          </div>
+          <div style="text-align:right">
+            <small>Across sectors</small>
+          </div>
         </div>
 
-        <div style="display:flex;gap:.6rem;justify-content:flex-end;align-items:center;margin-top:.4rem">
-          <button type="button" class="btn-ghost" onclick="resetForm()">Reset</button>
-          <button type="submit" class="cta">Send inquiry</button>
-        </div>
-      </form>
-
-      <aside class="card" style="display:flex;flex-direction:column;gap:.75rem;justify-content:center">
-        <div>
-          <h4 style="margin:0">Office</h4>
-          <p style="color:var(--muted);margin:7px 0 0 0">123 Harbor Road, Suite 210<br />Metropolis, State</p>
+        <div class="stat">
+          <div>
+            <small>Safety Record</small>
+            <strong>Accident-free 3 yrs</strong>
+          </div>
+          <div style="text-align:right">
+            <small>Quality assurance</small>
+          </div>
         </div>
 
-        <div>
-          <h4 style="margin:0">Contact</h4>
-          <p style="color:var(--muted);margin:7px 0 0 0">Phone: (555) 123-4567<br/>Email: hello@vanguardco.example</p>
-        </div>
-
-        <div>
-          <h4 style="margin:0">Hours</h4>
-          <p style="color:var(--muted);margin:7px 0 0 0">Mon–Fri 8:00–17:00</p>
+        <div style="display:flex;gap:12px;">
+          <div style="flex:1;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:12px;border-radius:10px">
+            <small style="color:var(--muted)">Service area</small>
+            <div style="font-weight:700">Commercial & Civil</div>
+          </div>
+          <div style="width:90px;background:rgba(255,255,255,0.02);display:grid;place-items:center;border-radius:10px">
+            <small style="color:var(--muted)">Since</small><div style="font-weight:700">2005</div>
+          </div>
         </div>
       </aside>
-    </div>
-  </section>
-</main>
+    </section>
 
-<footer>
-  <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap">
-    <div style="display:flex;gap:.6rem;align-items:center">
-      <div class="logo" style="width:36px;height:36px">VC</div>
-      <div>
-        <div style="font-weight:700">Vanguard Construction Co.</div>
-        <div style="font-size:12px;color:var(--muted)">© <span id="year"></span> All rights reserved</div>
+    <section id="services" class="wrap" aria-label="Services">
+      <h3 class="section-title">Our Services</h3>
+      <p class="lead-small">Comprehensive construction and engineering services tailored to complex projects.</p>
+
+      <div class="services-grid" role="list">
+        <article class="card" role="listitem">
+          <div class="service-ico">B</div>
+          <h4>Building Construction</h4>
+          <p>Turnkey construction for commercial, residential and institutional buildings with modern engineering and strict QA processes.</p>
+        </article>
+
+        <article class="card" role="listitem">
+          <div class="service-ico">R</div>
+          <h4>Renovation & Refurbishment</h4>
+          <p>Adaptive renovations, heritage refurbishments and interior retrofits using sustainable materials and best practices.</p>
+        </article>
+
+        <article class="card" role="listitem">
+          <div class="service-ico">P</div>
+          <h4>Project Management</h4>
+          <p>End-to-end project management: planning, procurement, scheduling, cost control and stakeholder coordination.</p>
+        </article>
+
+        <article class="card" role="listitem">
+          <div class="service-ico">C</div>
+          <h4>Civil Engineering Works</h4>
+          <p>Civil infrastructure, roadworks, foundations and structural engineering delivered by our certified engineering teams.</p>
+        </article>
       </div>
-    </div>
+    </section>
 
-    <div style="display:flex;gap:1rem;align-items:center">
-      <a href="#projects" style="color:var(--muted);text-decoration:none">Portfolio</a>
-      <a href="#about" style="color:var(--muted);text-decoration:none">About</a>
-      <a href="#contact" style="color:var(--muted);text-decoration:none">Contact</a>
-    </div>
-  </div>
-</footer>
+    <section id="about" class="wrap" aria-label="About Us">
+      <h3 class="section-title">About Us</h3>
+      <p class="lead-small">Imperial Construction is an engineering-led construction company focused on quality, safety and long-term client partnerships.</p>
 
-<!-- Project modal (simple) -->
-<div id="projectModal" style="position:fixed;inset:0;display:none;z-index:120;align-items:center;justify-content:center;padding:20px;">
-  <div style="background:linear-gradient(180deg,#0b0d10,#0e1214);padding:18px;border-radius:14px;max-width:720px;width:100%;border:1px solid rgba(255,255,255,0.04);box-shadow:0 18px 80px rgba(0,0,0,0.7)">
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem">
-      <div>
-        <h3 id="projTitle" style="margin:0;color:#fff">Project</h3>
-        <p id="projDesc" style="color:var(--muted);margin:6px 0 0 0"></p>
+      <div class="about-grid">
+        <div>
+          <p style="color:var(--muted);margin-bottom:14px">We combine decades of experience with modern digital workflows — BIM-ready planning, strict HSE management and a client-first approach.</p>
+
+          <div class="values">
+            <div class="value">
+              <div class="val-ico">Q</div>
+              <div>
+                <strong>Quality</strong>
+                <div style="color:var(--muted);font-size:13px">Robust QA with independent inspections and material traceability.</div>
+              </div>
+            </div>
+
+            <div class="value">
+              <div class="val-ico">S</div>
+              <div>
+                <strong>Safety</strong>
+                <div style="color:var(--muted);font-size:13px">Strict HSE standards and training programs for all sites.</div>
+              </div>
+            </div>
+
+            <div class="value">
+              <div class="val-ico">E</div>
+              <div>
+                <strong>Engineering Excellence</strong>
+                <div style="color:var(--muted);font-size:13px">Structural, civil and MEP design coordination with certified engineers.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="muted-box">
+          <strong>Leadership</strong>
+          <p style="color:var(--muted);margin-top:8px">Led by senior engineers and construction managers with experience across large-scale infrastructure and commercial projects.</p>
+
+          <div style="margin-top:12px">
+            <small style="color:var(--muted)">Certifications</small>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <div class="chip">ISO 9001</div>
+              <div class="chip">ISO 45001</div>
+            </div>
+          </div>
+        </aside>
       </div>
-      <div style="display:flex;gap:.6rem;align-items:center">
-        <button class="btn-ghost" onclick="openInNew()">Open</button>
-        <button class="btn-ghost" onclick="closeProject()">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+    </section>
 
-<script>
-  // Smooth scroll & active link tracking
-  document.querySelectorAll('a.navlink').forEach(a=>{
-    a.addEventListener('click', (e)=>{
-      const href = a.getAttribute('href');
-      if(href && href.startsWith('#')){
-        e.preventDefault();
-        const el = document.querySelector(href);
-        if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
-        // close mobile if open
-        closeMobile();
-      }
+    <section id="projects" class="wrap" aria-label="Projects">
+      <h3 class="section-title">Selected Projects</h3>
+      <p class="lead-small">Representative portfolio showcasing commercial, civil and renovation projects.</p>
+
+      <div class="projects-grid">
+        <article class="project" tabindex="0" aria-label="Urban complex project">
+          <img src="photos/naksha-banwao-3ddHcjHmiGw-unsplash.jpg">
+          <div class="p-body">
+            <small>Commercial</small>
+            <h4 style="margin:6px 0 0 0">Riverview Business Center</h4>
+            <p style="margin:8px 0 0 0;color:var(--muted)">High-performance office building with integrated services and structural optimization.</p>
+          </div>
+        </article>
+
+        <article class="project" tabindex="0" aria-label="Bridge construction project">
+          <img src="photos/scott-blake-x-ghf9LjrVg-unsplash.jpg">
+          <div class="p-body">
+            <small>Civil Works</small>
+            <h4 style="margin:6px 0 0 0">Portside Bridge Rehabilitation</h4>
+            <p style="margin:8px 0 0 0;color:var(--muted)">Structural strengthening and resurfacing to improve lifespan and traffic flow.</p>
+          </div>
+        </article>
+
+        <article class="project" tabindex="0" aria-label="Residential renovation">
+          <img src="photos/roberto-nickson-rEJxpBskj3Q-unsplash.jpg">
+          <div class="p-body">
+            <small>Renovation</small>
+            <h4 style="margin:6px 0 0 0">Harborview Residences Refurbishment</h4>
+            <p style="margin:8px 0 0 0;color:var(--muted)">Adaptive reuse and energy-focused upgrades for residential complex.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="wrap" aria-label="Contact">
+      <h3 class="section-title">Contact</h3>
+      <p class="lead-small">Get in touch for project inquiries, RFPs or to request a consultation.</p>
+
+      <div class="contact-grid">
+        <form class="form" onsubmit="event.preventDefault(); alert('Form submitted (demo)');">
+          <input type="text" name="name" placeholder="Full name" required>
+          <input type="email" name="email" placeholder="Email address" required>
+          <input type="text" name="company" placeholder="Company (optional)">
+          <textarea name="message" placeholder="Brief description of your project" required></textarea>
+          <div style="display:flex;gap:12px;align-items:center">
+            <button class="btn" type="submit">Send Message</button>
+            <small style="color:var(--muted)">We reply within 2 business days</small>
+          </div>
+        </form>
+
+        <aside class="muted-box">
+          <div style="display:flex;gap:12px;align-items:center">
+            <div class="contact-ico">&#128205;</div>
+            <div>
+              <strong>Imperial Construction</strong>
+              <div style="color:var(--muted);font-size:13px">Eldoret-Nakuru Rd, Suite 400<br/>Metropolis, State</div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <div class="contact-row">
+              <div class="contact-ico">📞</div>
+              <div>
+                <div style="font-weight:700">+254743471232</div>
+                <div style="color:var(--muted);font-size:13px">📌Mon-Fri, 9am-6pm</div>
+              </div>
+            </div>
+
+            <div style="margin-top:12px" class="contact-row">
+              <div class="contact-ico">✉</div>
+              <div>
+                <div style="font-weight:700">achillesbright6@gmail.com</div>
+                <div style="color:var(--muted);font-size:13px">RFPs & Procurement</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:16px">
+            <small style="color:var(--muted)">Follow us</small>
+            <div style="margin-top:8px" class="social-links">
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+             <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+               <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <div>&copy; <strong>Imperial Construction</strong> — Building reliable infrastructure since 2005</div>
+      <div style="color:var(--muted)">Designed for high-quality engineering projects</div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    (function(){
+      const toggle = document.getElementById('menuToggle');
+      const nav = document.getElementById('navLinks');
+      toggle.addEventListener('click', ()=> nav.classList.toggle('show'));
+      // Close on link click
+      document.querySelectorAll('.nav-link').forEach(a=>{
+        a.addEventListener('click', ()=> nav.classList.remove('show'));
+      });
+    })();
+
+    // Highlight active nav link using IntersectionObserver
+    (function(){
+      const sections = document.querySelectorAll('main section[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      const map = {};
+      navLinks.forEach(link => {
+        const id = (link.getAttribute('href') || '').replace('#','');
+        if(id) map[id] = link;
+      });
+
+      const observer = new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{
+          const id = entry.target.id;
+          const link = map[id];
+          if(!link) return;
+          if(entry.isIntersecting){
+            navLinks.forEach(l=>l.classList.remove('active'));
+            link.classList.add('active');
+          }
+        });
+      }, {root:null,threshold:0.45});
+
+      sections.forEach(s=>observer.observe(s));
+    })();
+
+    // Smooth keyboard focus for project cards: open detail (demo: focus highlight)
+    document.querySelectorAll('.project').forEach(p=>{
+      p.addEventListener('keydown', (e)=>{
+        if(e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          // For demo, show a simple alert. Replace with modal if needed.
+          const title = p.querySelector('h4')?.innerText || 'Project';
+          alert(title + " — project details (demo)");
+        }
+      });
     });
-  });
 
-  const sections = Array.from(document.querySelectorAll('main section, header'));
-  const navLinks = Array.from(document.querySelectorAll('.navlink'));
-
-  function onScroll(){
-    let found=false;
-    for(const s of sections){
-      const rect = s.getBoundingClientRect();
-      if(rect.top <= 120 && rect.bottom > 120){
-        const id = s.id ? '#'+s.id : null;
-        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === id));
-        found=true;
-        break;
-      }
+    // Small accessibility improvement: reduce motion respects
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.style.scrollBehavior = 'auto';
+      document.querySelectorAll('.card, .project').forEach(e => e.style.transition = 'none');
     }
-    if(!found){
-      navLinks.forEach(l => l.classList.remove('active'));
-      document.querySelector('.navlink[href="#home"]').classList.add('active');
-    }
-  }
-  window.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
-
-  // Mobile nav
-  function toggleMobile(){
-    const p = document.getElementById('mobilePanel');
-    const active = p.classList.toggle('active');
-    p.setAttribute('aria-hidden', !active);
-  }
-  function closeMobile(){
-    const p = document.getElementById('mobilePanel');
-    p.classList.remove('active');
-    p.setAttribute('aria-hidden', 'true');
-  }
-
-  // Contact form handlers (placeholder)
-  function submitForm(e){
-    e.preventDefault();
-    const name = document.getElementById('name').value || 'Client';
-    alert('Thanks, ' + name + '! Your inquiry has been submitted. We will contact you shortly.');
-    resetForm();
-    // In production: send via fetch to a backend endpoint
-  }
-  function resetForm(){
-    document.querySelector('form').reset();
-  }
-
-  // Simple project modal
-  function openProject(title, desc){
-    document.getElementById('projTitle').textContent = title;
-    document.getElementById('projDesc').textContent = desc;
-    document.getElementById('projectModal').style.display = 'flex';
-  }
-  function closeProject(){
-    document.getElementById('projectModal').style.display = 'none';
-  }
-  function openInNew(){
-    // Placeholder: in a multi-page version this would open the dedicated project page
-    closeProject();
-    alert('Open full project page (placeholder)');
-  }
-
-  // Footer year
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Accessibility: close modal with Esc
-  document.addEventListener('keydown',(e)=>{
-    if(e.key === 'Escape'){
-      closeProject();
-      closeMobile();
-    }
-  });
-
-</script>
+  </script>
 </body>
-</html>
+
+
+
+
+
