@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vanguard Construction Co. — Modern Construction Services</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0d10;
+      --card:#0f1316;
+      --muted:#9aa4ad;
+      --accent:#ff7a00; /* orange accent */
+      --glass: rgba(255,255,255,0.03);
+      --radius:12px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:linear-gradient(180deg,#060708 0%, #0b0d10 100%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.4;
+      overflow-y:scroll;
+    }
+
+    /* Sticky Navbar */
+    header{
+      position:sticky;
+      top:0;
+      z-index:60;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(11,13,16,0.75), rgba(11,13,16,0.45));
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    .container{
+      max-width:1200px;
+      margin:0 auto;
+      padding:1rem;
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:1rem;
+      justify-content:space-between;
+    }
+    .brand{
+      display:flex;
+      gap:.75rem;
+      align-items:center;
+      text-decoration:none;
+      color:inherit;
+    }
+    .brand .logo{
+      width:44px;
+      height:44px;
+      border-radius:10px;
+      background: linear-gradient(135deg,var(--accent), #ff5b00);
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      color:#0b0d10;
+      font-size:18px;
+      box-shadow: 0 4px 18px rgba(255,122,0,0.12), inset 0 -6px 18px rgba(0,0,0,0.18);
+    }
+    nav ul{
+      display:flex;
+      gap:0.5rem;
+      list-style:none;
+      margin:0;
+      padding:0;
+      align-items:center;
+    }
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      padding:.6rem .8rem;
+      border-radius:8px;
+      font-weight:600;
+      font-size:14px;
+      transition:all .18s ease;
+    }
+    nav a:hover, nav a.active{
+      color:#fff;
+      background: linear-gradient(90deg, rgba(255,122,0,0.12), rgba(255,90,0,0.06));
+      box-shadow: 0 4px 18px rgba(255,122,0,0.04);
+    }
+
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      gap:.6rem;
+      padding:.6rem .9rem;
+      border-radius:10px;
+      background: linear-gradient(90deg,var(--accent), #ff5b00);
+      color:#0b0d10;
+      font-weight:700;
+      text-decoration:none;
+      box-shadow: 0 8px 28px rgba(255,122,0,0.12);
+      border: none;
+      cursor:pointer;
+    }
+
+    /* Mobile */
+    .hamburger{
+      display:none;
+      background:transparent;
+      border:0;
+      color:var(--muted);
+      font-size:22px;
+      cursor:pointer;
+    }
+
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:2rem;
+      align-items:center;
+      padding:3rem 1rem;
+    }
+    .hero .eyebrow{
+      color:var(--accent);
+      font-weight:700;
+      font-size:13px;
+      letter-spacing:.8px;
+      text-transform:uppercase;
+      margin-bottom:.8rem;
+    }
+    .hero h1{
+      margin:0 0 .6rem 0;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height:1.02;
+      letter-spacing:-0.01em;
+      font-weight:800;
+      color:#fff;
+    }
+    .hero p{
+      color:var(--muted);
+      margin:0 0 1.2rem 0;
+      max-width:60ch;
+    }
+    .hero .actions{display:flex; gap:.8rem; margin-top:1rem}
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius);
+      padding:1rem;
+      border:1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 6px 30px rgba(0,0,0,0.6);
+    }
+
+    /* Services */
+    .services{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:1rem;
+      margin-top:1.25rem;
+    }
+    .service{
+      padding:1.15rem;
+      border-radius:12px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+      display:flex;
+      flex-direction:column;
+      gap:.6rem;
+      min-height:110px;
+    }
+    .service .icon{
+      width:44px;
+      height:44px;
+      border-radius:9px;
+      background:rgba(255,122,0,0.12);
+      color:var(--accent);
+      display:grid;
+      place-items:center;
+      font-weight:700;
+    }
+    .service h4{margin:0;color:#fff;margin-top:.3rem}
+    .service p{margin:0;color:var(--muted);font-size:14px;}
+
+    /* About */
+    .about{
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:1.5rem;
+      align-items:center;
+      margin-top:1.5rem;
+    }
+    .about .stats{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1rem;
+    }
+    .stat{background:var(--card); padding:1rem;border-radius:10px;text-align:center}
+    .stat h3{margin:0;font-size:20px;color:var(--accent)}
+    .stat p{margin:0;color:var(--muted);font-size:13px}
+
+    /* Projects */
+    .projects-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:1rem;
+      margin-top:1rem;
+    }
+    .project-card{
+      position:relative;
+      overflow:hidden;
+      border-radius:12px;
+      min-height:160px;
+      background:linear-gradient(180deg,#0b1013,#0f1316);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .project-card .meta{
+      position:absolute;
+      bottom:12px;
+      left:12px;
+      right:12px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .project-card .meta h4{margin:0;font-size:15px}
+    .project-card .meta p{margin:0;color:var(--muted);font-size:13px}
+
+    /* Contact */
+    .contact-grid{
+      display:grid;
+      grid-template-columns: 1fr 380px;
+      gap:1rem;
+      margin-top:1.25rem;
+    }
+    form input, form textarea{
+      width:100%;
+      padding:.9rem;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.04);
+      background:transparent;
+      color:#e8f1fb;
+      resize:vertical;
+      font-size:14px;
+    }
+    form label{font-size:13px;color:var(--muted);display:block;margin-bottom:.4rem}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+    .btn-ghost{
+      background:transparent;
+      color:var(--accent);
+      border:1px solid rgba(255,122,0,0.16);
+      padding:.75rem 1rem;
+      border-radius:10px;
+      cursor:pointer;
+    }
+
+    footer{
+      margin-top:2.5rem;
+      padding:2rem 0;
+      border-top:1px solid rgba(255,255,255,0.02);
+      color:var(--muted);
+    }
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .about{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      .projects-grid{grid-template-columns:repeat(2,1fr)}
+      .services{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:720px){
+      .container{padding:.7rem}
+      nav ul{display:none}
+      .hamburger{display:inline-flex}
+      .hero { padding:2rem .6rem}
+      .projects-grid{grid-template-columns:1fr}
+      .service{min-height:120px}
+    }
+
+    /* Mobile nav panel */
+    .mobile-panel{
+      position:fixed;
+      inset:0;
+      background:linear-gradient(180deg, rgba(7,8,10,0.82), rgba(7,8,10,0.9));
+      display:none;
+      z-index:100;
+      padding:5rem 1rem 2rem;
+      overflow:auto;
+    }
+    .mobile-panel.active{display:block}
+    .mobile-panel nav ul{display:flex; flex-direction:column; gap:.4rem}
+    .mobile-panel .mobile-cta{margin-top:1rem;display:flex;gap:.6rem}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav" role="navigation" aria-label="Main navigation">
+    <a href="#home" class="brand" onclick="closeMobile()">
+      <div class="logo">VC</div>
+      <div>
+        <div style="font-weight:800">Vanguard</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">Construction Co.</div>
+      </div>
+    </a>
+
+    <nav aria-hidden="false">
+      <ul id="menu">
+        <li><a href="#home" class="navlink active">Home</a></li>
+        <li><a href="#services" class="navlink">Services</a></li>
+        <li><a href="#about" class="navlink">About</a></li>
+        <li><a href="#projects" class="navlink">Projects</a></li>
+        <li><a href="#contact" class="navlink">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div style="display:flex;align-items:center;gap:.6rem">
+      <a href="#contact" class="cta navlink">Get a Quote</a>
+      <button class="hamburger" aria-label="Open menu" onclick="toggleMobile()">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Panel -->
+<div id="mobilePanel" class="mobile-panel" aria-hidden="true">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem" class="container">
+    <div style="display:flex;gap:.6rem;align-items:center">
+      <div class="logo" style="width:40px;height:40px">VC</div>
+      <div>
+        <div style="font-weight:800">Vanguard</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">Construction Co.</div>
+      </div>
+    </div>
+    <button class="hamburger" aria-label="Close menu" onclick="toggleMobile()">✕</button>
+  </div>
+
+  <nav class="container" aria-label="Mobile navigation">
+    <ul>
+      <li><a href="#home" class="navlink" onclick="closeMobile()">Home</a></li>
+      <li><a href="#services" class="navlink" onclick="closeMobile()">Services</a></li>
+      <li><a href="#about" class="navlink" onclick="closeMobile()">About</a></li>
+      <li><a href="#projects" class="navlink" onclick="closeMobile()">Projects</a></li>
+      <li><a href="#contact" class="navlink" onclick="closeMobile()">Contact</a></li>
+    </ul>
+
+    <div class="mobile-cta" style="margin-top:1rem">
+      <a class="cta" href="#contact" onclick="closeMobile()">Request a Quote</a>
+      <a class="btn-ghost" href="#projects" onclick="closeMobile()">Our Work</a>
+    </div>
+  </nav>
+</div>
+
+<main>
+  <section id="home" class="container hero" aria-labelledby="hero-title">
+    <div>
+      <div class="eyebrow">Trusted • Reliable • Bold</div>
+      <h1 id="hero-title">Building tomorrow's skyline with precision and pride</h1>
+      <p>Vanguard Construction Co. delivers commercial and residential construction, renovation, and project management — on time and beyond expectation. We blend engineering excellence, modern design, and sustainable practices to bring bold visions to life.</p>
+      <div class="actions">
+        <a href="#projects" class="cta">View Projects</a>
+        <a href="#services" class="btn-ghost">Our Services</a>
+      </div>
+
+      <div class="card" style="margin-top:1.25rem">
+        <h3 style="margin:0 0 .25rem 0">Why clients choose us</h3>
+        <p style="margin:0;color:var(--muted)">Comprehensive planning, transparent budgeting, and expert teams — from site survey to final handover.</p>
+      </div>
+
+      <section id="services" style="margin-top:1.25rem">
+        <h2 style="margin:0 0 .6rem 0">Services</h2>
+        <div class="services" aria-label="Services list">
+          <div class="service card">
+            <div style="display:flex;align-items:center;gap:.6rem">
+              <div class="icon">GC</div>
+              <h4>General Contracting</h4>
+            </div>
+            <p>Full-service contracting from foundations to finish — schedule-driven and quality-focused.</p>
+          </div>
+          <div class="service card">
+            <div style="display:flex;align-items:center;gap:.6rem">
+              <div class="icon">PM</div>
+              <h4>Project Management</h4>
+            </div>
+            <p>Integrated planning, procurement, and site supervision to keep costs and timelines on track.</p>
+          </div>
+          <div class="service card">
+            <div style="display:flex;align-items:center;gap:.6rem">
+              <div class="icon">RD</div>
+              <h4>Design & Renovation</h4>
+            </div>
+            <p>Adaptive reuse, interior upgrades, and modern design solutions for growing needs.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <aside>
+      <div class="card">
+        <h4 style="margin:0 0 .5rem 0">Request a consultation</h4>
+        <p style="color:var(--muted);margin:0 0 .8rem 0">Tell us about your project and we'll prepare a tailored plan and estimate.</p>
+        <a href="#contact" class="cta" style="display:block;text-align:center;">Contact Us</a>
+      </div>
+
+      <div class="card" style="margin-top:1rem">
+        <h4 style="margin:0">Safety & Quality</h4>
+        <p style="color:var(--muted);margin-top:.5rem">ISO-level processes, certified safety officers, and continuous quality audits.</p>
+      </div>
+    </aside>
+  </section>
+
+  <section id="about" class="container about" aria-labelledby="about-title">
+    <div>
+      <h2 id="about-title" style="margin-top:0">About Us</h2>
+      <p style="color:var(--muted);max-width:65ch">Founded by industry veterans, Vanguard Construction Co. combines decades of experience in commercial builds, civil works, and residential projects. Our team focuses on sustainable material choices, digital coordination, and client-first communication to deliver projects that stand the test of time.</p>
+
+      <div style="margin-top:1rem" class="card">
+        <h3 style="margin:0">Our Approach</h3>
+        <ul style="margin:8px 0 0 16px;color:var(--muted)">
+          <li>Transparent estimating and budgeting</li>
+          <li>Lean construction & schedule optimization</li>
+          <li>Safety-first site practices</li>
+        </ul>
+      </div>
+    </div>
+
+    <aside>
+      <div class="stats">
+        <div class="stat card">
+          <h3>18+</h3>
+          <p>Years experience</p>
+        </div>
+        <div class="stat card">
+          <h3>300+</h3>
+          <p>Projects completed</p>
+        </div>
+        <div class="stat card">
+          <h3>99%</h3>
+          <p>Client satisfaction</p>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <section id="projects" class="container" aria-labelledby="projects-title" style="margin-top:1.5rem">
+    <h2 id="projects-title">Featured Projects</h2>
+    <p style="color:var(--muted)">A selection of recent builds demonstrating scale, innovation, and finish quality.</p>
+
+    <div class="projects-grid" role="list">
+      <div class="project-card card" role="listitem" style="background-image: linear-gradient(120deg, rgba(255,122,0,0.06), transparent), url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22400%22><rect width=%22600%22 height=%22400%22 fill=%22%230f1316%22/><text x=%2230%22 y=%2260%22 font-size=%2240%22 fill=%22%23ff7a00%22>Industrial Park</text></svg>'); background-size:cover; background-position:center" onclick="openProject('Industrial Park', 'Completed 2025 — 120,000 sq ft industrial logistics hub with sustainable systems and advanced site controls')">
+        <div class="meta">
+          <div>
+            <h4>Industrial Park</h4>
+            <p>Logistics hub — 120k sqft</p>
+          </div>
+          <div style="display:flex;gap:.5rem">
+            <button class="btn-ghost" onclick="event.stopPropagation();openProject('Industrial Park', 'Completed 2025 — 120,000 sq ft industrial logistics hub with sustainable systems and advanced site controls')">Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card card" role="listitem" style="background-image: linear-gradient(120deg, rgba(255,122,0,0.06), transparent), url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22400%22><rect width=%22600%22 height=%22400%22 fill=%22%230f1316%22/><text x=%2230%22 y=%2260%22 font-size=%2240%22 fill=%22%23ff7a00%22>Riverside Residences</text></svg>'); background-size:cover; background-position:center" onclick="openProject('Riverside Residences', 'Luxury waterfront apartments — 48 units with amenity deck and integrated smart systems')">
+        <div class="meta">
+          <div>
+            <h4>Riverside Residences</h4>
+            <p>Luxury apartments</p>
+          </div>
+          <div>
+            <button class="btn-ghost" onclick="event.stopPropagation();openProject('Riverside Residences', 'Luxury waterfront apartments — 48 units with amenity deck and integrated smart systems')">Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card card" role="listitem" style="background-image: linear-gradient(120deg, rgba(255,122,0,0.06), transparent), url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22400%22><rect width=%22600%22 height=%22400%22 fill=%22%230f1316%22/><text x=%2230%22 y=%2260%22 font-size=%2240%22 fill=%22%23ff7a00%22>Downtown Office</text></svg>'); background-size:cover; background-position:center" onclick="openProject('Downtown Office', 'Adaptive office tower renovation — energy efficiency upgrades and new facade')">
+        <div class="meta">
+          <div>
+            <h4>Downtown Office</h4>
+            <p>Office renovation</p>
+          </div>
+          <div>
+            <button class="btn-ghost" onclick="event.stopPropagation();openProject('Downtown Office', 'Adaptive office tower renovation — energy efficiency upgrades and new facade')">Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:1rem">
+      <a class="cta" href="#contact">Discuss a similar project</a>
+    </div>
+  </section>
+
+  <section id="contact" class="container" aria-labelledby="contact-title" style="margin-top:1.5rem">
+    <h2 id="contact-title">Contact</h2>
+    <p style="color:var(--muted)">Ready to start? Share the details below and our team will reach out within one business day.</p>
+
+    <div class="contact-grid">
+      <form class="card" onsubmit="submitForm(event)" aria-label="Contact form" style="display:flex;flex-direction:column;gap:.75rem">
+        <div class="form-row">
+          <div>
+            <label for="name">Full name</label>
+            <input id="name" name="name" required placeholder="Jane Doe">
+          </div>
+          <div>
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" placeholder="+1 555 555 5555">
+          </div>
+        </div>
+
+        <div>
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" required placeholder="you@company.com">
+        </div>
+
+        <div>
+          <label for="message">Project details</label>
+          <textarea id="message" name="message" rows="5" placeholder="Brief description, budget range, location..." required></textarea>
+        </div>
+
+        <div style="display:flex;gap:.6rem;justify-content:flex-end;align-items:center;margin-top:.4rem">
+          <button type="button" class="btn-ghost" onclick="resetForm()">Reset</button>
+          <button type="submit" class="cta">Send inquiry</button>
+        </div>
+      </form>
+
+      <aside class="card" style="display:flex;flex-direction:column;gap:.75rem;justify-content:center">
+        <div>
+          <h4 style="margin:0">Office</h4>
+          <p style="color:var(--muted);margin:7px 0 0 0">123 Harbor Road, Suite 210<br />Metropolis, State</p>
+        </div>
+
+        <div>
+          <h4 style="margin:0">Contact</h4>
+          <p style="color:var(--muted);margin:7px 0 0 0">Phone: (555) 123-4567<br/>Email: hello@vanguardco.example</p>
+        </div>
+
+        <div>
+          <h4 style="margin:0">Hours</h4>
+          <p style="color:var(--muted);margin:7px 0 0 0">Mon–Fri 8:00–17:00</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap">
+    <div style="display:flex;gap:.6rem;align-items:center">
+      <div class="logo" style="width:36px;height:36px">VC</div>
+      <div>
+        <div style="font-weight:700">Vanguard Construction Co.</div>
+        <div style="font-size:12px;color:var(--muted)">© <span id="year"></span> All rights reserved</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:1rem;align-items:center">
+      <a href="#projects" style="color:var(--muted);text-decoration:none">Portfolio</a>
+      <a href="#about" style="color:var(--muted);text-decoration:none">About</a>
+      <a href="#contact" style="color:var(--muted);text-decoration:none">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Project modal (simple) -->
+<div id="projectModal" style="position:fixed;inset:0;display:none;z-index:120;align-items:center;justify-content:center;padding:20px;">
+  <div style="background:linear-gradient(180deg,#0b0d10,#0e1214);padding:18px;border-radius:14px;max-width:720px;width:100%;border:1px solid rgba(255,255,255,0.04);box-shadow:0 18px 80px rgba(0,0,0,0.7)">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem">
+      <div>
+        <h3 id="projTitle" style="margin:0;color:#fff">Project</h3>
+        <p id="projDesc" style="color:var(--muted);margin:6px 0 0 0"></p>
+      </div>
+      <div style="display:flex;gap:.6rem;align-items:center">
+        <button class="btn-ghost" onclick="openInNew()">Open</button>
+        <button class="btn-ghost" onclick="closeProject()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Smooth scroll & active link tracking
+  document.querySelectorAll('a.navlink').forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      const href = a.getAttribute('href');
+      if(href && href.startsWith('#')){
+        e.preventDefault();
+        const el = document.querySelector(href);
+        if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+        // close mobile if open
+        closeMobile();
+      }
+    });
+  });
+
+  const sections = Array.from(document.querySelectorAll('main section, header'));
+  const navLinks = Array.from(document.querySelectorAll('.navlink'));
+
+  function onScroll(){
+    let found=false;
+    for(const s of sections){
+      const rect = s.getBoundingClientRect();
+      if(rect.top <= 120 && rect.bottom > 120){
+        const id = s.id ? '#'+s.id : null;
+        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === id));
+        found=true;
+        break;
+      }
+    }
+    if(!found){
+      navLinks.forEach(l => l.classList.remove('active'));
+      document.querySelector('.navlink[href="#home"]').classList.add('active');
+    }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Mobile nav
+  function toggleMobile(){
+    const p = document.getElementById('mobilePanel');
+    const active = p.classList.toggle('active');
+    p.setAttribute('aria-hidden', !active);
+  }
+  function closeMobile(){
+    const p = document.getElementById('mobilePanel');
+    p.classList.remove('active');
+    p.setAttribute('aria-hidden', 'true');
+  }
+
+  // Contact form handlers (placeholder)
+  function submitForm(e){
+    e.preventDefault();
+    const name = document.getElementById('name').value || 'Client';
+    alert('Thanks, ' + name + '! Your inquiry has been submitted. We will contact you shortly.');
+    resetForm();
+    // In production: send via fetch to a backend endpoint
+  }
+  function resetForm(){
+    document.querySelector('form').reset();
+  }
+
+  // Simple project modal
+  function openProject(title, desc){
+    document.getElementById('projTitle').textContent = title;
+    document.getElementById('projDesc').textContent = desc;
+    document.getElementById('projectModal').style.display = 'flex';
+  }
+  function closeProject(){
+    document.getElementById('projectModal').style.display = 'none';
+  }
+  function openInNew(){
+    // Placeholder: in a multi-page version this would open the dedicated project page
+    closeProject();
+    alert('Open full project page (placeholder)');
+  }
+
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Accessibility: close modal with Esc
+  document.addEventListener('keydown',(e)=>{
+    if(e.key === 'Escape'){
+      closeProject();
+      closeMobile();
+    }
+  });
+
+</script>
+</body>
+</html>
